@@ -1,0 +1,19 @@
+
+main{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 2rem 0 0 2rem;
+}
+
+.grid_7{
+    display: flex;
+    gap: 3rem;
+}
+
+.dashboard-module{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    color:hsl(200, 70%, 25%);
+}

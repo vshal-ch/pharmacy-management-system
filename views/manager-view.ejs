@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Users | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+    <link rel="stylesheet" href="./css/add-form.css" />
+    <script src="./js/change-content.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="manager.html">Dashboard</a></li>
+        <li class="list-item"><a href="manager-view.html">View Users</a></li>
+        <li class="list-item">
+          <a href="manager-presc.html">View Prescriptions</a>
+        </li>
+        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
+        <li class="list-item"><a href="#">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="main-content">
+        <h2 class="title">View users</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active" data-goto="table1">
+              <h3 class="tab-title">Pharmacists</h3>
+            </li>
+            <li class="tab-item" data-goto="table2">
+              <h3 class="tab-title">Cashiers</h3>
+            </li>
+            <li class="tab-item" data-goto="table3">
+              <h3 class="tab-title">Managers</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table class="tab-content" id="table1">
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Staff ID</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Username</th>
+              </tr>
+              <tr>
+                <td>Sai</td>
+                <td>Preetham</td>
+                <td>123</td>
+                <td>9874653252</td>
+                <td>preetham@gmail.com</td>
+                <td>sai</td>
+              </tr>
+            </table>
+            <table class="hidden tab-content" id="table2">
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Staff ID</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Username</th>
+              </tr>
+              <tr>
+                <td>Vishal</td>
+                <td>h</td>
+                <td>134</td>
+                <td>8874659852</td>
+                <td>vishal@gmail.com</td>
+                <td>vishal</td>
+              </tr>
+            </table>
+            <table class="hidden tab-content" id="table3">
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Staff ID</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Username</th>
+              </tr>
+              <tr>
+                <td>Tarun</td>
+                <td>s</td>
+                <td>421</td>
+                <td>7674623252</td>
+                <td>tarun@gmail.com</td>
+                <td>tarun</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

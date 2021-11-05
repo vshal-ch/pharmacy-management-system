@@ -1,0 +1,31 @@
+{
+  "name": "pharmacy-management-system",
+  "version": "1.0.0",
+  "description": "A Pharmacy Management System is one of the most essential tools required in a pharmacy store. It is mainly used to manage pharmacy related activities such as Medical Inventory, Keeping Record, Sales Management and also Managing the stock of the medicines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vshal-ch/pharmacy-management-system.git"
+  },
+  "keywords": [
+    "pharmacy",
+    "management",
+    "pharmacy",
+    "management",
+    "system"
+  ],
+  "author": "Preetham, Tarun, Vishal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vshal-ch/pharmacy-management-system/issues"
+  },
+  "homepage": "https://github.com/vshal-ch/pharmacy-management-system#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }
+}

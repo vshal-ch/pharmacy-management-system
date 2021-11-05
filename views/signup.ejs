@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pharmacy System</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="content">
+      <header id="header">
+        <h1 class="main-heading">Pharmacy System</h1>
+      </header>
+      <form>
+        <h2 class="sub-heading">Signup here</h2>
+        <input
+          type="text"
+          name="username"
+          value=""
+          placeholder="Username"
+          class="input"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          value=""
+          class="input"
+          placeholder="Password"
+          required
+        />
+        <select name="position" class="select" required>
+          <option>--Select position--</option>
+          <option>Admin</option>
+          <option>Pharmacist</option>
+          <option>Cashier</option>
+          <option>Manager</option>
+        </select>
+        <input type="submit" name="submit" value="SignUp" class="submit" />
+      </form>
+    </section>
+  </body>
+</html>

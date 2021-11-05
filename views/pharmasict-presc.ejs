@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Priscriptions | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+    <link rel="stylesheet" href="./css/add-form.css" />
+    <script src="./js/change-content.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="pharmacist.html">Dashboard</a></li>
+        <li class="list-item">
+          <a href="./pharmasict-presc.html">Prescription</a>
+        </li>
+        <li class="list-item"><a href="./pharmacist-stocks.html">Stock</a></li>
+        <li class="list-item"><a href="#">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="main-content">
+        <h2 class="title">Prescriptions</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active" data-goto="table">
+              <h3 class="tab-title">View</h3>
+            </li>
+            <li class="tab-item" data-goto="form">
+              <h3 class="tab-title">Create new</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table class="tab-content" id="table">
+              <tr>
+                <th>Customer</th>
+                <th>Prescription No</th>
+                <th>Invoice No</th>
+                <th>Date</th>
+                <th>Delete</th>
+              </tr>
+              <tr>
+                <td>vishal</td>
+                <td>1001</td>
+                <td>12</td>
+                <td>2021-09-03 12:34:56</td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+            </table>
+            <form class="hidden tab-content" id="form">
+              <input
+                type="number"
+                name="cust-id"
+                class="input"
+                placeholder="Customer ID"
+                required
+              />
+              <input
+                type="text"
+                name="cust-name"
+                class="input"
+                placeholder="Customer Name"
+                required
+              />
+              <input
+                type="number"
+                name="staff-id"
+                class="input"
+                placeholder="Staff ID"
+                required
+              />
+              <input
+                type="number"
+                name="age"
+                class="input"
+                placeholder="Age"
+                required
+              />
+              <input
+                type="tel"
+                name="gender"
+                class="input"
+                placeholder="Gender"
+                required
+              />
+              <input
+                type="text"
+                name="address"
+                class="input"
+                placeholder="Postal address"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                class="input"
+                placeholder="Phone"
+                required
+              />
+              <input
+                type="number"
+                name="presc-num"
+                class="input"
+                placeholder="Prescription number"
+                required
+              />
+              <input
+                type="number"
+                name="invoice-num"
+                class="input"
+                placeholder="Invoice number"
+                required
+              />
+              <select name="drug" class="input">
+                <option value="drugname">Drug name</option>
+              </select>
+              <input
+                type="number"
+                name="strength"
+                class="input"
+                placeholder="Strength"
+                required
+              />
+              <input
+                type="text"
+                name="dose"
+                class="input"
+                placeholder="Dose"
+                required
+              />
+              <input
+                type="number"
+                name="quantity"
+                class="input"
+                placeholder="Quantity"
+                required
+              />
+              <input type="submit" value="ADD" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

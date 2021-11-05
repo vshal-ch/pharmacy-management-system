@@ -1,0 +1,36 @@
+body{
+    overflow: hidden;
+}
+
+main{
+    overflow: scroll;
+}
+
+.form-container{
+    margin:2rem 0 0 2rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.input{
+    padding: 0.6rem 1.3rem;
+    border: 1px solid hsl(200, 70%, 15%);
+    border-radius: 5px;
+    width: 300px;
+    font-size: 1rem;
+}
+
+input[type='submit']{
+    padding: .6rem 1.7rem;
+    background-color: hsl(200, 80%, 45%);
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}

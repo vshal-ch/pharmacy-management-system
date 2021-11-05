@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Stocks | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+    <link rel="stylesheet" href="./css/add-form.css" />
+    <script src="./js/change-content.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="manager.html">Dashboard</a></li>
+        <li class="list-item"><a href="manager-view.html">View Users</a></li>
+        <li class="list-item">
+          <a href="manager-presc.html">View Prescriptions</a>
+        </li>
+        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
+        <li class="list-item"><a href="#">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="main-content">
+        <h2 class="title">View Stocks</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active" data-goto="table">
+              <h3 class="tab-title">View Stocks</h3>
+            </li>
+            <li class="tab-item" data-goto="form">
+              <h3 class="tab-title">Add Medicine</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table class="tab-content" id="table">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Discription</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Delete</th>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Piriton</td>
+                <td>Pills</td>
+                <td>Pain killer</td>
+                <td>Available</td>
+                <td>2021-09-03 12:34:56</td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Ocupol Dx</td>
+                <td>Eye drops</td>
+                <td>Sterile Eye/Ear Drops</td>
+                <td>Available</td>
+                <td>2021-09-01 12:34:21</td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Paracetmol</td>
+                <td>Pills</td>
+                <td>Fever</td>
+                <td>Available</td>
+                <td>2021-08-28 12:21:32</td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+            </table>
+            <form class="hidden tab-content" id="form">
+              <input
+                type="text"
+                name="drug-name"
+                class="input"
+                placeholder="Drug Name"
+                required
+              />
+              <input
+                type="text"
+                name="category"
+                class="input"
+                placeholder="Category"
+                required
+              />
+              <input
+                type="text"
+                name="description"
+                class="input"
+                placeholder="Description"
+                required
+              />
+              <input
+                type="text"
+                name="company"
+                class="input"
+                placeholder="ManufacturingCompany"
+                required
+              />
+              <input
+                type="text"
+                name="supplier"
+                class="input"
+                placeholder="Supplier"
+                required
+              />
+              <input
+                type="number"
+                name="quantity"
+                class="input"
+                placeholder="Quantity"
+                required
+              />
+              <input
+                type="number"
+                name="cost"
+                class="input"
+                placeholder="Unit cost"
+                required
+              />
+              <input type="submit" value="ADD" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

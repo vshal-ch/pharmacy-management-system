@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Priscriptions | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="manager.html">Dashboard</a></li>
+        <li class="list-item"><a href="manager-view.html">View Users</a></li>
+        <li class="list-item">
+          <a href="manager-presc.html">View Prescriptions</a>
+        </li>
+        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
+        <li class="list-item"><a href="#">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="content">
+        <h2 class="title">View Priscriptions</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active">
+              <h3 class="tab-title">Prescriptions</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table>
+              <tr>
+                <th>Customer</th>
+                <th>Prescription No</th>
+                <th>Invoice No</th>
+                <th>Date</th>
+                <th>Delete</th>
+              </tr>
+              <tr>
+                <td>vishal</td>
+                <td>1001</td>
+                <td>12</td>
+                <td>2021-09-03 12:34:56</td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

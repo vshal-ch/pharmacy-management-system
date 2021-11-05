@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manage Cashier | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+    <link rel="stylesheet" href="./css/add-form.css" />
+    <script src="./js/change-content.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="admin.html">Dashboard</a></li>
+        <li class="list-item">
+          <a href="admin-pharmacist.html">Pharmacist</a>
+        </li>
+        <li class="list-item"><a href="admin-manager.html">Manager</a></li>
+        <li class="list-item"><a href="admin-cashier.html">Cashier</a></li>
+        <li class="list-item"><a href="#">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="main-content">
+        <h2 class="title">Manage Cashier</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active" data-goto="table">
+              <h3 class="tab-title">View users</h3>
+            </li>
+            <li class="tab-item" data-goto="form">
+              <h3 class="tab-title">Add user</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table class="tab-content" id="table">
+              <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Usernme</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Vishal</td>
+                <td>ch</td>
+                <td>vishal</td>
+                <td><img src="./assets/updat.svg" alt="update" /></td>
+                <td><img src="./assets/delete.svg" alt="delete" /></td>
+              </tr>
+            </table>
+            <form class="hidden tab-content" id="form">
+              <input
+                type="text"
+                name="firstname"
+                class="input"
+                placeholder="Firstname"
+                required
+              />
+              <input
+                type="text"
+                name="lastname"
+                class="input"
+                placeholder="Lastname"
+                required
+              />
+              <input
+                type="number"
+                name="staff-id"
+                class="input"
+                placeholder="Staff ID"
+                required
+              />
+              <input
+                type="text"
+                name="address"
+                class="input"
+                placeholder="Postal address"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                class="input"
+                placeholder="Phone"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                class="input"
+                placeholder="Email"
+                required
+              />
+              <input
+                type="text"
+                name="uname"
+                class="input"
+                placeholder="Username"
+                required
+              />
+              <input
+                type="password"
+                name="pass"
+                class="input"
+                placeholder="Password"
+                required
+              />
+              <input type="submit" value="ADD" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

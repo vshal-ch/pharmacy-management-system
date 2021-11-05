@@ -1,0 +1,57 @@
+main{
+    padding: 2rem;
+}
+
+.title{
+    color: hsl(200, 70%, 15%);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(0, 32, 80);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.tabs-list{
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.tab-title{
+    background-color:hsl(200, 70%, 65%);
+    padding: 0.6rem 1.4rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px -5px #0006;
+    color: #fff;
+    cursor: pointer;
+}
+
+.tab-item.active .tab-title{
+    background-color:hsl(200, 70%, 95%);
+    color:rgb(0, 32, 80);
+    box-shadow: 0 5px 5px -5px #0006;
+    cursor: default;
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: 2rem;
+}
+
+th{
+    background-color: hsl(200, 70%, 35%);
+    color: #fff;
+}
+
+th,
+td{
+    padding: 0.6rem 1rem;
+}
+
+td{
+    background-color: hsl(200, 70%, 85%);
+}
