@@ -77,3 +77,13 @@ a{
     text-decoration: none;
      align-self: center;
 }
+
+.input.red,
+.select.red{
+    border-color: red;
+}
+
+.tred{
+    color: red;
+    text-align: center;
+}

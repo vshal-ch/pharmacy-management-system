@@ -1,20 +1,44 @@
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const loginRoute = require("./routes/loginRoute");
+const admin = require("./controllers/adminController");
+
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", (err) => {
+  console.log(err);
+});
+db.once("open", () => {
+  console.log("Connected to database");
+});
 
 const app = express();
 
-app.set('view engine','ejs');
-app.use(express.static('public'));
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
-    res.redirect('/login');
+app.get("/", (req, res) => {
+  res.redirect("/login");
 });
 
-app.get('/login',(req,res)=>{
-    res.render('login');
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
+app.get('/admin',(req,res)=>{
+  res.render('admin');
 })
 
-app.get('/signup',(req,res)=>{
-    res.render('signup');
-})
+app.use("/login", loginRoute);
 
-app.listen('4040');
+app.listen("3000");

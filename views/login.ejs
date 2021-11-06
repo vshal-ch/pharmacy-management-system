@@ -9,41 +9,67 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <% 
+        let obj = {name: locals.name,
+                    pos: locals.pos};
+        let str = JSON.stringify(obj);
+      %> 
   </head>
   <body>
-    <section class="content">
+    <section class="content" data-togo='<% if(locals.success){%><%= str %><% } %> '>
       <header id="header">
         <h1 class="main-heading">Pharmacy System</h1>
       </header>
-      <form>
+      <form class="login-form" action="/login" method="post">
         <h2 class="sub-heading">Login here</h2>
+        <% if(locals.message){ %> 
+          <p class="tred"><%= locals.message %> </p>
+       <% } %> 
         <input
           type="text"
           name="username"
-          value=""
           placeholder="Username"
-          class="input"
-          autocomplete="off"
-          required
-        />
+          id="uname"
+          <% var classname="input"
+             if(locals.message){
+              if(locals.name){%>
+                value = "<%= locals.name %>" 
+              <%} 
+              else{ 
+                classname = 'input red'; 
+              }
+            }%> 
+            class="<%= classname %>" 
+            autocomplete="off" 
+            required />
         <input
           type="password"
           name="password"
-          value=""
-          class="input"
-          placeholder="Password"
-          required
-        />
-        <select name="position" class="select" required>
-          <option>--Select position--</option>
-          <option>Admin</option>
-          <option>Pharmacist</option>
-          <option>Cashier</option>
-          <option>Manager</option>
+          id="pass"
+          <% var classpass="input";
+              if(locals.message){
+                if(locals.passkey){%>
+                value = "<%= locals.passkey %>" 
+              <%} 
+              else{ 
+                classpass = 'input red'; 
+              }
+            }
+        %>
+        class="<%= classpass %>" 
+        placeholder="Password"
+        required />
+        <select name="position" class="select" id="position" required>
+          <option value="select">--Select position--</option>
+          <option value="admin">Admin</option>
+          <option value="pharmacist">Pharmacist</option>
+          <option value="cashier">Cashier</option>
+          <option value="manager">Manager</option>
         </select>
         <input type="submit" name="submit" value="Login" class="submit" />
       </form>
       <a href="/signup" class="signup">Don't have an account Signup</a>
     </section>
   </body>
+  <script src="./js/loginPage.js"></script>
 </html>
