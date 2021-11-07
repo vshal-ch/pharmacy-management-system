@@ -1,5 +1,6 @@
 const loginForm = document.querySelector(".login-form");
 const sec = document.querySelector('.content');
+
 if(sec.dataset.togo){
   localStorage.setItem('info',sec.dataset.togo);
   location.href= '/admin';

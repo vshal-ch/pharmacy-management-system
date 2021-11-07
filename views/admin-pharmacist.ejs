@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/main-with-table.css" />
     <link rel="stylesheet" href="./css/add-form.css" />
     <script src="./js/change-content.js" defer></script>
+    <script src="./js/formValidate.js" defer></script>
   </head>
   <body>
     <header>
@@ -29,11 +30,11 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="admin.html">Dashboard</a></li>
-        <li class="list-item"><a href="admin-pharmacist.html">Pharmacist</a></li>
-        <li class="list-item"><a href="admin-manager.html">Manager</a></li>
-        <li class="list-item"><a href="admin-cashier.html">Cashier</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/admin">Dashboard</a></li>
+        <li class="list-item"><a href="#">Pharmacist</a></li>
+        <li class="list-item"><a href="/admin/manager">Manager</a></li>
+        <li class="list-item"><a href="/admin/cashier">Cashier</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -74,15 +75,15 @@
               </tr>
             </table>
 
-            <form class="hidden tab-content" id="form">
+            <form class="hidden tab-content" id="form" action="/admin/pharmacist" method="post">
               <input type="text" name="firstname" class="input" placeholder="Firstname" required>
-              <input type="text" name="lastname" class="input" placeholder="Lastname" required>
-              <input type="number" name="staff-id" class="input" placeholder="Staff ID" required>
+              <input type="text" name="lastname" class="input" placeholder="Lastname">
+              <input type="number" name="staffId" class="input" placeholder="Staff ID" required>
               <input type="text" name="address" class="input" placeholder="Postal address" required>
+              <input type="number" name="salary" class="input" placeholder="Salary" required>
               <input type="tel" name="phone" class="input" placeholder="Phone" required>
               <input type="email" name="email" class="input" placeholder="Email" required>
               <input type="text" name="uname" class="input" placeholder="Username" required>
-              <input type="password" name="pass" class="input" placeholder="Password" required>
               <input type="submit" value="ADD">
           </form>
           </div>

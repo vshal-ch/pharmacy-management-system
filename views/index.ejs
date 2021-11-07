@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: #aaa;
+        }
+
+        .loader{
+            width: 70px;
+            height: 70px;
+            position: relative;
+        }
+        .color{
+            width: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .color:first-child{
+            border-left: 3px solid hsl(210, 100%, 62%);
+            z-index: 2;
+            animation: rotateinf 0.5s linear infinite;
+        }
+        .color:last-child{
+            border: 2px solid #fff;
+        }
+
+        @keyframes rotateinf {
+            0%{
+                transform:  rotate(0deg);
+            }
+            50%{
+                transform:  rotate(180deg);
+            }
+            100%{
+                transform:  rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        let json = localStorage.getItem('info');
+        if(json){
+            location.href = '/admin';
+        }
+        else{
+            location.href = '/login';
+        }
+    </script>
+</head>
+<body>
+    <div class="loader">
+        <div class="color"></div>
+        <div class="color"></div>
+    </div>
+</body>
+</html>

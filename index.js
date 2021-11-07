@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const loginRoute = require("./routes/loginRoute");
-const admin = require("./controllers/adminController");
+const adminRoute = require('./routes/adminRoute')
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -24,21 +24,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.redirect("/login");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("index");
 });
 
 app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.get('/admin',(req,res)=>{
-  res.render('admin');
+app.get('/logout',(req,res)=>{
+  res.render('login',{removeAndRefresh: true})
 })
 
 app.use("/login", loginRoute);
+app.use("/admin", adminRoute);
 
 app.listen("3000");

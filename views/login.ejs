@@ -14,23 +14,40 @@
                     pos: locals.pos};
         let str = JSON.stringify(obj);
       %> 
+      <% if(locals.removeAndRefresh){ %> 
+        <script>
+          localStorage.removeItem('info');
+          location.href = 'login';
+        </script>
+        <% } %> 
+      <script>
+        let json = localStorage.getItem('info');
+        if(json){
+          location.href = '/admin';
+        }
+      </script>
   </head>
   <body>
-    <section class="content" data-togo='<% if(locals.success){%><%= str %><% } %> '>
+    <section class="content" 
+    <% if(!locals.removeAndRefresh){
+     if(locals.success){%>
+    data-togo='<%= str %>' <% } }%>>
       <header id="header">
         <h1 class="main-heading">Pharmacy System</h1>
       </header>
       <form class="login-form" action="/login" method="post">
         <h2 class="sub-heading">Login here</h2>
-        <% if(locals.message){ %> 
+        <% if(!locals.removeAndRefresh){
+           if(locals.message){ %> 
           <p class="tred"><%= locals.message %> </p>
-       <% } %> 
+       <% } }%> 
         <input
           type="text"
           name="username"
           placeholder="Username"
           id="uname"
           <% var classname="input"
+          if(!locals.removeAndRefresh){
              if(locals.message){
               if(locals.name){%>
                 value = "<%= locals.name %>" 
@@ -38,7 +55,7 @@
               else{ 
                 classname = 'input red'; 
               }
-            }%> 
+          }}%> 
             class="<%= classname %>" 
             autocomplete="off" 
             required />
@@ -47,6 +64,7 @@
           name="password"
           id="pass"
           <% var classpass="input";
+          if(!locals.removeAndRefresh){
               if(locals.message){
                 if(locals.passkey){%>
                 value = "<%= locals.passkey %>" 
@@ -54,7 +72,7 @@
               else{ 
                 classpass = 'input red'; 
               }
-            }
+            }}
         %>
         class="<%= classpass %>" 
         placeholder="Password"

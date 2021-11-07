@@ -24,6 +24,7 @@ form{
     border-radius: 5px;
     width: 300px;
     font-size: 1rem;
+    transition: border-color .2s linear;
 }
 
 input[type='submit']{
@@ -42,4 +43,8 @@ input[type='submit']{
     position: absolute;
     opacity: 0;
     pointer-events: none;
+}
+
+.input.red{
+    border-color: red;
 }

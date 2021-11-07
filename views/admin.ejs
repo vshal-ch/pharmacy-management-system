@@ -10,6 +10,18 @@
     />
     <link rel="stylesheet" href="./css/header-nav.css">
     <link rel="stylesheet" href="./css/admin.css" />
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'admin'){
+          location.href = '/'+obj.pos;
+        }
+        console.log('in admin');
+      }else{
+        location.href = '/login'
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -27,16 +39,16 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="admin.html">Dashboard</a></li>
-        <li class="list-item"><a href="admin-pharmacist.html">Pharmacist</a></li>
-        <li class="list-item"><a href="admin-manager.html">Manager</a></li>
-        <li class="list-item"><a href="admin-cashier.html">Cashier</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="#">Dashboard</a></li>
+        <li class="list-item"><a href="/admin/pharmacist">Pharmacist</a></li>
+        <li class="list-item"><a href="/admin/manager">Manager</a></li>
+        <li class="list-item"><a href="/admin/cashier">Cashier</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
       <div class="grid_7">
-        <a href="admin.html" class="dashboard-module">
+        <a href="#" class="dashboard-module">
           <img
             src="./assets/logos/admin-icon.png"
             width="75"
@@ -45,7 +57,7 @@
           />
           <span>Dashboard</span>
         </a>
-        <a href="admin-pharmacist.html" class="dashboard-module">
+        <a href="/admin/pharmacist" class="dashboard-module">
           <img
             src="./assets/logos/pharmacy.png"
             width="75"
@@ -54,7 +66,7 @@
           />
           <span>Pharmacist</span>
         </a>
-        <a href="admin-manager.html" class="dashboard-module">
+        <a href="/admin/manager" class="dashboard-module">
           <img
             src="./assets/logos/manager.png"
             width="75"
@@ -63,7 +75,7 @@
           />
           <span>Manager</span>
         </a>
-        <a href="admin-cashier.html" class="dashboard-module">
+        <a href="/admin/cashier" class="dashboard-module">
           <img
             src="./assets/logos/cashier.png"
             width="75"
