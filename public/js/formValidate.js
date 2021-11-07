@@ -6,7 +6,10 @@ function handleSubmit(e) {
     if (input.hasAttribute('required') && input.value.trim() === "") {
       input.classList.add("red");
       e.preventDefault();
-    } else {
+    } 
+    // else if(){
+    // }
+    else {
       input.classList.remove("red");
     }
   });

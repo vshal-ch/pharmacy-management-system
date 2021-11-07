@@ -59,20 +59,26 @@
             <table class="tab-content" id="table">
               <tr>
                 <th>ID</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Name</th>
                 <th>Usernme</th>
+                <th>Salary</th>
+                <th>Phone</th>
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
+              <% if(locals.tableData && locals.tableData.length>0){
+                tableData.forEach(row => {%>
               <tr>
-                <td>9</td>
-                <td>Sai</td>
-                <td>Preetdam</td>
-                <td>sai</td>
+                <td><%= row.id %></td>
+                <td><%= row.name %></td>
+                <td><%= row.uname %></td>
+                <td><%= row.salary %></td>
+                <td><%= row.phone %></td>
                 <td><img src="./assets/updat.svg" alt="update"></td>
                 <td><img src="./assets/delete.svg" alt="delete"></td>
               </tr>
+               <% });
+              } %> 
             </table>
 
             <form class="hidden tab-content" id="form" action="/admin/pharmacist" method="post">

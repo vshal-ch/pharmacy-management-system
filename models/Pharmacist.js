@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const schemaPharmacist = new mongoose.Schema({
-  fname: {
+  firstname: {
     type: String,
     required: true,
   },
-  lname: {
+  lastname: {
     type: String,
+    required: false,
   },
   staffId: {
     type: String,
@@ -35,7 +37,7 @@ const schemaPharmacist = new mongoose.Schema({
   password:{
       type: String,
       required: true,
-      default: '123456'
+      default: bcrypt.hashSync('123456',10)
   }
 });
 

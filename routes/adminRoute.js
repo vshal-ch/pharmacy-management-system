@@ -1,4 +1,5 @@
 const express = require('express');
+const pharmacist = require('../controllers/pharmacistController');
 
 const route = express.Router();
 
@@ -8,13 +9,9 @@ route.get('/',(req,res)=>{
     res.render('admin');
 })
 
-route.get('/pharmacist',(req,res)=>{
-    res.render('admin-pharmacist');
-})
+route.get('/pharmacist',pharmacist.phGet)
 
-route.post('/pharmacist',(req,res)=>{
-    console.log(req.body);
-})
+route.post('/pharmacist',pharmacist.phCreate)
 
 route.get('/manager',(req,res)=>{
     res.render('admin-manager');
