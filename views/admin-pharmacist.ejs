@@ -2,6 +2,17 @@
 <html>
   <head>
     <title>Manage Pharmacist | Pharmacy System</title>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'admin'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -74,15 +85,15 @@
                 <td><%= row.uname %></td>
                 <td><%= row.salary %></td>
                 <td><%= row.phone %></td>
-                <td><img src="./assets/updat.svg" alt="update"></td>
-                <td><img src="./assets/delete.svg" alt="delete"></td>
+                <td><img src="./assets/updat.svg" alt="update" data-id='<%= row.id %>' class='update'></td>
+                <td><img src="./assets/delete.svg" alt="delete" data-id='<%= row.id %>' class='delete'></td>
               </tr>
                <% });
               } %> 
             </table>
 
             <form class="hidden tab-content" id="form" action="/admin/pharmacist" method="post">
-              <input type="text" name="firstname" class="input" placeholder="Firstname" required>
+              <input type="text" name="firstname" class="input" placeholder="Firstname" required/>
               <input type="text" name="lastname" class="input" placeholder="Lastname">
               <input type="number" name="staffId" class="input" placeholder="Staff ID" required>
               <input type="text" name="address" class="input" placeholder="Postal address" required>
@@ -90,11 +101,29 @@
               <input type="tel" name="phone" class="input" placeholder="Phone" required>
               <input type="email" name="email" class="input" placeholder="Email" required>
               <input type="text" name="uname" class="input" placeholder="Username" required>
-              <input type="submit" value="ADD">
+              <input type="submit" value="ADD"/>
           </form>
           </div>
         </div>
       </section>
     </main>
   </body>
+  <script>
+     const updates = document.querySelectorAll('.update');
+     const deletes = document.querySelectorAll('.delete');
+
+     deletes.forEach(item =>{
+       item.addEventListener('click',()=>{
+         if(!confirm('Delete ID '+item.dataset.id)){
+           return
+         }
+         let url = location.href +'/'+ item.dataset.id;
+         fetch(url,{
+           method: 'delete',
+         }).then((res)=>{
+           location.reload();
+         })
+       })
+     })
+  </script>
 </html>

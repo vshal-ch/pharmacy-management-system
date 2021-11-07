@@ -2,6 +2,17 @@
 <html>
   <head>
     <title>Manage Managers | Pharmacy System</title>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'admin'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +23,7 @@
     <link rel="stylesheet" href="./css/main-with-table.css" />
     <link rel="stylesheet" href="./css/add-form.css" />
     <script src="./js/change-content.js" defer></script>
+    <script src="./js/formValidate.js" defer></script>
   </head>
   <body>
     <header>
@@ -52,35 +64,59 @@
             <table class="tab-content" id="table">
               <tr>
                 <th>ID</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Name</th>
                 <th>Usernme</th>
+                <th>Salary</th>
+                <th>Phone</th>
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
+              <% if(locals.tableData && locals.tableData.length>0){
+                tableData.forEach(row => {%>
               <tr>
-                <td>3</td>
-                <td>Tarun</td>
-                <td>Sanapala</td>
-                <td>tarun</td>
-                <td><img src="./assets/updat.svg" alt="update" /></td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
+                <td><%= row.id %></td>
+                <td><%= row.name %></td>
+                <td><%= row.uname %></td>
+                <td><%= row.salary %></td>
+                <td><%= row.phone %></td>
+                <td><img src="./assets/updat.svg" alt="update" data-id='<%= row.id %>' class='update'></td>
+                <td><img src="./assets/delete.svg" alt="delete" data-id='<%= row.id %>' class='delete'></td>
               </tr>
+               <% });
+              } %> 
             </table>
-            <form class="hidden tab-content" id="form">
-              <input type="text" name="firstname" class="input" placeholder="Firstname" required>
-              <input type="text" name="lastname" class="input" placeholder="Lastname" required>
-              <input type="number" name="staff-id" class="input" placeholder="Staff ID" required>
+            <form class="hidden tab-content" id="form" action="/admin/manager" method="post">
+              <input type="text" name="firstname" class="input" placeholder="Firstname" required/>
+              <input type="text" name="lastname" class="input" placeholder="Lastname">
+              <input type="number" name="staffId" class="input" placeholder="Staff ID" required>
               <input type="text" name="address" class="input" placeholder="Postal address" required>
+              <input type="number" name="salary" class="input" placeholder="Salary" required>
               <input type="tel" name="phone" class="input" placeholder="Phone" required>
               <input type="email" name="email" class="input" placeholder="Email" required>
               <input type="text" name="uname" class="input" placeholder="Username" required>
-              <input type="password" name="pass" class="input" placeholder="Password" required>
-              <input type="submit" value="ADD">
+              <input type="submit" value="ADD"/>
           </form>
           </div>
         </div>
       </section>
     </main>
   </body>
+  <script>
+     const updates = document.querySelectorAll('.update');
+     const deletes = document.querySelectorAll('.delete');
+
+     deletes.forEach(item =>{
+       item.addEventListener('click',()=>{
+         if(!confirm('Delete ID '+item.dataset.id)){
+           return
+         }
+         let url = location.href +'/'+ item.dataset.id;
+         fetch(url,{
+           method: 'delete',
+         }).then((res)=>{
+           location.reload();
+         })
+       })
+     })
+  </script>
 </html>
