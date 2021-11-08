@@ -2,6 +2,17 @@
 <html>
   <head>
     <title>Priscriptions | Pharmacy System</title>
+    <script>
+      let json = localStorage.getItem("info");
+      let obj = JSON.parse(json);
+      if (json) {
+        if (obj.pos !== "pharmacist") {
+          location.href = "/" + obj.pos;
+        }
+      } else {
+        location.href = "/login";
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,8 +23,9 @@
     <link rel="stylesheet" href="./css/main-with-table.css" />
     <link rel="stylesheet" href="./css/add-form.css" />
     <script src="./js/change-content.js" defer></script>
+    <script src="./js/formValidate.js" defer></script>
     <style>
-      select{
+      select {
         background-color: #fff;
       }
     </style>
@@ -55,21 +67,21 @@
           <div class="content">
             <table class="tab-content" id="table">
               <tr>
-                <th>Customer</th>
                 <th>Prescription No</th>
+                <th>Customer</th>
                 <th>Invoice No</th>
-                <th>Date</th>
-                <th>Delete</th>
+                <th>Drug</th>
+                <th>Strength</th>
+                <th>Dose</th>
+                <th>Quantity</th>
               </tr>
-              <tr>
-                <td>vishal</td>
-                <td>1001</td>
-                <td>12</td>
-                <td>2021-09-03 12:34:56</td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
-              </tr>
+              <% if(locals.tableData && locals.tableData.length>0){
+                   tableData.forEach(obj=>{
+                     for(item of obj){%> 
+                      <tr><%= item %></tr>
+                      <% }})} %>
             </table>
-            <form class="hidden tab-content" id="form">
+            <form class="hidden tab-content" id="form" action='/pharmacist/presc' method='post'>
               <input
                 type="text"
                 name="customerName"
@@ -84,7 +96,13 @@
                 placeholder="Age"
                 required
               />
-              <select name="gender" id="gender" class="input" aria-placeholder="Gender">
+              <select
+                name="gender"
+                id="gender"
+                class="input"
+                aria-placeholder="Gender"
+                required
+              >
                 <option value="" disabled selected>Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -110,8 +128,12 @@
                 placeholder="Invoice number"
                 required
               />
-              <select name="drug" class="input">
+              <select name="drug" class="input" required>
                 <option value="" disabled selected>Drug name</option>
+                <% if(locals.drugNames && locals.drugNames.length>0){
+                    drugNames.forEach(obj =>{%>
+                      <option value="<%= obj.stockId %>"><%= obj.drug %></option>
+                <% })} %>
               </select>
               <input
                 type="number"

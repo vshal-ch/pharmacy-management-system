@@ -1,4 +1,6 @@
 const express = require('express');
+const stock = require('../controllers/stockController');
+const presc = require('../controllers/prescController');
 
 const route = express.Router();
 
@@ -8,11 +10,10 @@ route.get('/',(req,res)=>{
     res.render('pharmacist');
 })
 
-route.get('/presc',(req,res)=>{
-    res.render('pharmacist-presc')
-})
-route.get('/stocks',(req,res)=>{
-    res.render('pharmacist-stocks')
-})
+route.get('/presc',presc.getPresc)
+route.post('/presc',presc.addPresc)
+route.get('/stocks',stock.getStock);
+
+route.post('/stocks',stock.addStock);
 
 module.exports = route;
