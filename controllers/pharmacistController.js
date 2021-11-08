@@ -29,8 +29,32 @@ const phDelete = async (req,res)=>{
   });
 }
 
+const phCompare = async (req, res) => {
+  let obj = await Pharmacist.findOne({ uname: req.body.username });
+  if (!obj) {
+    return res.render("login", {
+      passkey: req.body.password,
+      message: "User not found",
+    });
+  }
+  let flag = await bcrypt.compare(req.body.password, obj.key);
+  if (flag) {
+    return res.render("login", {
+      success: true,
+      name: req.body.username,
+      pos: req.body.position,
+    });
+  } else {
+    return res.render("login", {
+      name: req.body.username,
+      message: "Incorrect password",
+    });
+  }
+};
+
 module.exports ={
     phCreate,
     phGet,
-    phDelete
+    phDelete,
+    phCompare
 }

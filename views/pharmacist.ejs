@@ -8,8 +8,19 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/header-nav.css">
+    <link rel="stylesheet" href="./css/header-nav.css" />
     <link rel="stylesheet" href="./css/admin.css" />
+    <script>
+      let json = localStorage.getItem("info");
+      let obj = JSON.parse(json);
+      if (json) {
+        if (obj.pos !== "pharmacist") {
+          location.href = "/" + obj.pos;
+        }
+      } else {
+        location.href = "/login";
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -27,15 +38,15 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="pharmacist.html">Dashboard</a></li>
-          <li class="list-item"><a href="./pharmasict-presc.html">Prescription</a></li>
-          <li class="list-item"><a href="./pharmacist-stocks.html">Stock</a></li>
-          <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="#">Dashboard</a></li>
+        <li class="list-item"><a href="/pharmacist/presc">Prescription</a></li>
+        <li class="list-item"><a href="/pharmacist/stocks">Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
       <div class="grid_7">
-        <a href="pharmacist.html" class="dashboard-module">
+        <a href="#" class="dashboard-module">
           <img
             src="./assets/logos/pharmacy.png"
             width="75"
@@ -44,7 +55,7 @@
           />
           <span>Dashboard</span>
         </a>
-        <a href="pharmasict-presc.html" class="dashboard-module">
+        <a href="/pharmacist/presc" class="dashboard-module">
           <img
             src="./assets/logos/prescription.png"
             width="75"
@@ -53,7 +64,7 @@
           />
           <span>Prescription</span>
         </a>
-        <a href="./pharmacist-stocks.html" class="dashboard-module">
+        <a href="/pharmacist/stocks" class="dashboard-module">
           <img
             src="./assets/logos/stocks.png"
             width="75"

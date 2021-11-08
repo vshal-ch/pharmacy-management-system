@@ -23,7 +23,8 @@
       <script>
         let json = localStorage.getItem('info');
         if(json){
-          location.href = '/admin';
+          let obj = JSON.parse(json);
+          location.href = '/'+obj.pos;
         }
       </script>
   </head>

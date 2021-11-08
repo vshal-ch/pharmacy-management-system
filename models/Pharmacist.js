@@ -34,7 +34,7 @@ const schemaPharmacist = new mongoose.Schema({
     type: String,
     required: true,
   },
-  password:{
+  key:{
       type: String,
       required: true,
       default: bcrypt.hashSync('123456',10)

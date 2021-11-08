@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="./css/main-with-table.css" />
     <link rel="stylesheet" href="./css/add-form.css" />
     <script src="./js/change-content.js" defer></script>
+    <style>
+      select{
+        background-color: #fff;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -29,12 +34,10 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="pharmacist.html">Dashboard</a></li>
-        <li class="list-item">
-          <a href="./pharmasict-presc.html">Prescription</a>
-        </li>
-        <li class="list-item"><a href="./pharmacist-stocks.html">Stock</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/pharmacist">Dashboard</a></li>
+        <li class="list-item"><a href="">Prescription</a></li>
+        <li class="list-item"><a href="/pharmacist/stocks">Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -68,24 +71,10 @@
             </table>
             <form class="hidden tab-content" id="form">
               <input
-                type="number"
-                name="cust-id"
-                class="input"
-                placeholder="Customer ID"
-                required
-              />
-              <input
                 type="text"
-                name="cust-name"
+                name="customerName"
                 class="input"
                 placeholder="Customer Name"
-                required
-              />
-              <input
-                type="number"
-                name="staff-id"
-                class="input"
-                placeholder="Staff ID"
                 required
               />
               <input
@@ -95,20 +84,11 @@
                 placeholder="Age"
                 required
               />
-              <input
-                type="tel"
-                name="gender"
-                class="input"
-                placeholder="Gender"
-                required
-              />
-              <input
-                type="text"
-                name="address"
-                class="input"
-                placeholder="Postal address"
-                required
-              />
+              <select name="gender" id="gender" class="input" aria-placeholder="Gender">
+                <option value="" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
               <input
                 type="tel"
                 name="phone"
@@ -118,20 +98,20 @@
               />
               <input
                 type="number"
-                name="presc-num"
+                name="prescNum"
                 class="input"
                 placeholder="Prescription number"
                 required
               />
               <input
                 type="number"
-                name="invoice-num"
+                name="invoiceNum"
                 class="input"
                 placeholder="Invoice number"
                 required
               />
               <select name="drug" class="input">
-                <option value="drugname">Drug name</option>
+                <option value="" disabled selected>Drug name</option>
               </select>
               <input
                 type="number"

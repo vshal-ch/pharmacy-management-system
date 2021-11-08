@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const loginRoute = require("./routes/loginRoute");
-const adminRoute = require('./routes/adminRoute')
+const adminRoute = require('./routes/adminRoute');
+const pharmacistRoute = require('./routes/pharmacistRoute');
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -37,5 +38,6 @@ app.get('/logout',(req,res)=>{
 
 app.use("/login", loginRoute);
 app.use("/admin", adminRoute);
+app.use('/pharmacist',pharmacistRoute);
 
 app.listen("3000");

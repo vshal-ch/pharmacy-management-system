@@ -2,8 +2,10 @@ const loginForm = document.querySelector(".login-form");
 const sec = document.querySelector('.content');
 
 if(sec.dataset.togo){
-  localStorage.setItem('info',sec.dataset.togo);
-  location.href= '/admin';
+  let inf = sec.dataset.togo;
+  localStorage.setItem('info',inf);
+  let obj = JSON.parse(inf);
+  location.href= '/'+obj.pos;
 }
 
 function handleSubmit(e) {
