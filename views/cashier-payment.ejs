@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem("info");
+      let obj = JSON.parse(json);
+      if (json) {
+        if (obj.pos !== "cashier") {
+          location.href = "/" + obj.pos;
+        }
+      } else {
+        location.href = "/login";
+      }
+    </script>
     <title>Payement | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,7 +21,7 @@
     />
     <link rel="stylesheet" href="./css/header-nav.css" />
     <link rel="stylesheet" href="./css/main-with-table.css" />
-    <link rel="stylesheet" href="./css/payment-form.css">
+    <link rel="stylesheet" href="./css/payment-form.css" />
   </head>
   <body>
     <header>
@@ -28,9 +39,9 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="cashier.html">Dashboard</a></li>
-        <li class="list-item"><a href="cashier-payment.html">Process payment</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/cashier">Dashboard</a></li>
+        <li class="list-item"><a href="#">Process payment</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -44,18 +55,48 @@
           </ul>
           <div class="form-container">
             <form>
-                <input type="text" name="name" class="input" placeholder="Name" required>
-                <input type="number" name="invoice-no" class="input" placeholder="Invoice number" required>
-                <input type="number" name="cust-id" class="input" placeholder="Customer ID" required>
-                <input type="number" name="amount" class="input" placeholder="Amount" required>
-                <select class="input" required>
-                    <option value="default">Select Payment</option>
-                    <option value="default">Net banking</option>
-                    <option value="default">UPI</option>
-                    <option value="default">PayTM</option>
-                </select>
-                <input type="number" name="ser-no" class="input" placeholder="Serial number" required>
-                <input type="submit" value="PAY">
+              <input
+                type="text"
+                name="name"
+                class="input"
+                placeholder="Name"
+                required
+              />
+              <input
+                type="number"
+                name="invoice-no"
+                class="input"
+                placeholder="Invoice number"
+                required
+              />
+              <input
+                type="number"
+                name="cust-id"
+                class="input"
+                placeholder="Customer ID"
+                required
+              />
+              <input
+                type="number"
+                name="amount"
+                class="input"
+                placeholder="Amount"
+                required
+              />
+              <select class="input" required>
+                <option value="default">Select Payment</option>
+                <option value="default">Net banking</option>
+                <option value="default">UPI</option>
+                <option value="default">PayTM</option>
+              </select>
+              <input
+                type="number"
+                name="ser-no"
+                class="input"
+                placeholder="Serial number"
+                required
+              />
+              <input type="submit" value="PAY" />
             </form>
           </div>
         </div>

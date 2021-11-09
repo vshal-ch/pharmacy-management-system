@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const loginRoute = require("./routes/loginRoute");
 const adminRoute = require('./routes/adminRoute');
 const pharmacistRoute = require('./routes/pharmacistRoute');
+const cashierRoute = require('./routes/cashierRoute');
+const managerRoute = require('./routes/managerRoute')
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -39,5 +41,7 @@ app.get('/logout',(req,res)=>{
 app.use("/login", loginRoute);
 app.use("/admin", adminRoute);
 app.use('/pharmacist',pharmacistRoute);
+app.use('/cashier',cashierRoute);
+app.use('/manager',managerRoute);
 
 app.listen("3000");

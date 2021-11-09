@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'manager'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <title>Manager | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,16 +38,16 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="manager.html">Dashboard</a></li>
-        <li class="list-item"><a href="manager-view.html">View Users</a></li>
-        <li class="list-item"><a href="manager-presc.html">View Prescriptions</a></li>
-        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="#">Dashboard</a></li>
+        <li class="list-item"><a href="/manager/view">View Users</a></li>
+        <li class="list-item"><a href="/manager/presc">View Prescriptions</a></li>
+        <li class="list-item"><a href="/manager/stocks">Manage Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
       <div class="grid_7">
-        <a href="manager.html" class="dashboard-module">
+        <a href="#" class="dashboard-module">
           <img
             src="./assets/logos/manager.png"
             width="75"
@@ -45,7 +56,7 @@
           />
           <span>Dashboard</span>
         </a>
-        <a href="manager-view.html" class="dashboard-module">
+        <a href="/manager/view" class="dashboard-module">
           <img
             src="./assets/logos/users.png"
             width="75"
@@ -54,7 +65,7 @@
           />
           <span>View users</span>
         </a>
-        <a href="manager-presc.html" class="dashboard-module">
+        <a href="/manager/presc" class="dashboard-module">
           <img
             src="./assets/logos/prescription.png"
             width="75"
@@ -63,7 +74,7 @@
           />
           <span>View Prescription</span>
         </a>
-        <a href="manage-stock.html" class="dashboard-module">
+        <a href="/manager/stocks" class="dashboard-module">
           <img
             src="./assets/logos/stocks.png"
             width="75"

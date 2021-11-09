@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'manager'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <title>View Users | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,13 +40,11 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="manager.html">Dashboard</a></li>
-        <li class="list-item"><a href="manager-view.html">View Users</a></li>
-        <li class="list-item">
-          <a href="manager-presc.html">View Prescriptions</a>
-        </li>
-        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/manager">Dashboard</a></li>
+        <li class="list-item"><a href="#">View Users</a></li>
+        <li class="list-item"><a href="/manager/presc">View Prescriptions</a></li>
+        <li class="list-item"><a href="/manager/stocks">Manage Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -56,57 +65,54 @@
           <div class="content">
             <table class="tab-content" id="table1">
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
                 <th>Staff ID</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>Name</th>
                 <th>Username</th>
+                <th>Salary</th>
+                <th>Phone</th>
               </tr>
+              <% if(locals.pharmacists && locals.pharmacists.length) {
+                locals.pharmacists.forEach(ph =>{%> 
               <tr>
-                <td>Sai</td>
-                <td>Preetham</td>
-                <td>123</td>
-                <td>9874653252</td>
-                <td>preetham@gmail.com</td>
-                <td>sai</td>
+                <% for(key in ph){ %>
+                <td><%= ph[key] %></td>
+                <% }%>
               </tr>
+              <% })} %>
             </table>
             <table class="hidden tab-content" id="table2">
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
                 <th>Staff ID</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>Name</th>
                 <th>Username</th>
+                <th>Salary</th>
+                <th>Phone</th>
               </tr>
+              <% if(locals.cashiers && locals.cashiers.length) {
+                locals.cashiers.forEach(cs =>{%> 
               <tr>
-                <td>Vishal</td>
-                <td>h</td>
-                <td>134</td>
-                <td>8874659852</td>
-                <td>vishal@gmail.com</td>
-                <td>vishal</td>
+                <% for(key in cs){ %>
+                <td><%= cs[key] %></td>
+                <% }%>
               </tr>
+              <% })} %>
             </table>
             <table class="hidden tab-content" id="table3">
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
                 <th>Staff ID</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>Name</th>
                 <th>Username</th>
+                <th>Salary</th>
+                <th>Phone</th>
               </tr>
+              <% if(locals.managers && locals.managers.length) {
+                locals.managers.forEach(mg =>{%> 
               <tr>
-                <td>Tarun</td>
-                <td>s</td>
-                <td>421</td>
-                <td>7674623252</td>
-                <td>tarun@gmail.com</td>
-                <td>tarun</td>
+                <% for(key in mg){ %>
+                <td><%= mg[key] %></td>
+                <% }%>
               </tr>
+              <% })} %>
             </table>
           </div>
         </div>

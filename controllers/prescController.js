@@ -1,7 +1,7 @@
 const Prescription = require('../models/Prescription');
-const { getNames } = require('./stockController');
+const { getNames,decreaseStock } = require('./stockController');
 
-const getPresc =async (req,res)=>{
+const getPresc =async (req,res,flag=true)=>{
     let drugsArray = await getNames();
     Prescription.find().then(result=>{
         let obj = result.map(item =>{
@@ -15,12 +15,23 @@ const getPresc =async (req,res)=>{
                 quantity: item.quantity
             }
         })
-        res.render('pharmacist-presc',{tableData: obj,drugNames: drugsArray})
+        if(flag){
+            res.render('pharmacist-presc',{tableData: obj,drugNames: drugsArray})
+        }
+        else{
+            return obj;
+        }
     })
 }
 
 const addPresc = (req,res)=>{
-    
+    let newPresc = new Prescription(req.body);
+    newPresc.save().then(result=>{
+        let num = req.body.quantity;
+        decreaseStock(req.body.drug,num).then(()=>{
+            res.redirect('/pharmacist/presc');
+        });
+    })
 }
 
 module.exports={

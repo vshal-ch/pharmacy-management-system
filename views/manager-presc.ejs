@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'manager'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <title>View Priscriptions | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,13 +38,11 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="manager.html">Dashboard</a></li>
-        <li class="list-item"><a href="manager-view.html">View Users</a></li>
-        <li class="list-item">
-          <a href="manager-presc.html">View Prescriptions</a>
-        </li>
-        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/manager">Dashboard</a></li>
+        <li class="list-item"><a href="/manager/view">View Users</a></li>
+        <li class="list-item"><a href="#">View Prescriptions</a></li>
+        <li class="list-item"><a href="/manager/stocks">Manage Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -47,21 +56,24 @@
           </ul>
           <div class="content">
             <table>
-              <tr>
-                <th>Customer</th>
-                <th>Prescription No</th>
-                <th>Invoice No</th>
-                <th>Date</th>
-                <th>Delete</th>
-              </tr>
-              <tr>
-                <td>vishal</td>
-                <td>1001</td>
-                <td>12</td>
-                <td>2021-09-03 12:34:56</td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
-              </tr>
-            </table>
+            <tr>
+              <th>Prescription No</th>
+              <th>Customer</th>
+              <th>Invoice No</th>
+              <th>Drug</th>
+              <th>Strength</th>
+              <th>Dose</th>
+              <th>Quantity</th>
+            </tr>
+            <% if(locals.tableData && locals.tableData.length>0){
+                 tableData.forEach(obj=>{%>
+                 <tr><%
+                   for(item in obj){%> 
+                    <td><%= obj[item] %></td>
+                    <% } %>
+                 </tr>
+                    <% })} %>
+          </table>
           </div>
         </div>
       </section>

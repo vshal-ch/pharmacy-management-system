@@ -76,10 +76,13 @@
                 <th>Quantity</th>
               </tr>
               <% if(locals.tableData && locals.tableData.length>0){
-                   tableData.forEach(obj=>{
-                     for(item of obj){%> 
-                      <tr><%= item %></tr>
-                      <% }})} %>
+                   tableData.forEach(obj=>{%>
+                   <tr><%
+                     for(item in obj){%> 
+                      <td><%= obj[item] %></td>
+                      <% } %>
+                   </tr>
+                      <% })} %>
             </table>
             <form class="hidden tab-content" id="form" action='/pharmacist/presc' method='post'>
               <input

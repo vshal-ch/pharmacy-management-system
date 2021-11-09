@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem("info");
+      let obj = JSON.parse(json);
+      if (json) {
+        if (obj.pos !== "manager") {
+          location.href = "/" + obj.pos;
+        }
+      } else {
+        location.href = "/login";
+      }
+    </script>
     <title>View Stocks | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,6 +23,7 @@
     <link rel="stylesheet" href="./css/main-with-table.css" />
     <link rel="stylesheet" href="./css/add-form.css" />
     <script src="./js/change-content.js" defer></script>
+    <script src="./js/formValidate.js" defer></script>
   </head>
   <body>
     <header>
@@ -29,13 +41,11 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="manager.html">Dashboard</a></li>
-        <li class="list-item"><a href="manager-view.html">View Users</a></li>
-        <li class="list-item">
-          <a href="manager-presc.html">View Prescriptions</a>
-        </li>
-        <li class="list-item"><a href="manage-stock.html">Manage Stock</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="/manager">Dashboard</a></li>
+        <li class="list-item"><a href="/manager/view">View Users</a></li>
+        <li class="list-item"><a href="/manager/presc">View Prescriptions</a></li>
+        <li class="list-item"><a href="#">Manage Stock</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
@@ -57,42 +67,32 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Discription</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Delete</th>
+                <th>Left</th>
+                <th>Unit Cost</th>
               </tr>
+              <% if(locals.tableData && locals.tableData.length>0) {
+                    tableData.forEach(data=>{%> 
               <tr>
-                <td>4</td>
-                <td>Piriton</td>
-                <td>Pills</td>
-                <td>Pain killer</td>
-                <td>Available</td>
-                <td>2021-09-03 12:34:56</td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
+                <td><%= data.id %></td>
+                <td><%= data.name %></td>
+                <td><%= data.category %></td>
+                <td><%= data.desc %></td>
+                <td><%= data.quantity %></td>
+                <td><%= data.cost %></td>
               </tr>
-              <tr>
-                <td>5</td>
-                <td>Ocupol Dx</td>
-                <td>Eye drops</td>
-                <td>Sterile Eye/Ear Drops</td>
-                <td>Available</td>
-                <td>2021-09-01 12:34:21</td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Paracetmol</td>
-                <td>Pills</td>
-                <td>Fever</td>
-                <td>Available</td>
-                <td>2021-08-28 12:21:32</td>
-                <td><img src="./assets/delete.svg" alt="delete" /></td>
-              </tr>
+              <% })}%>
             </table>
-            <form class="hidden tab-content" id="form">
+            <form class="hidden tab-content" id="form" action='/pharmacist/stocks' method="post">
+              <input
+                type="number"
+                name="stockId"
+                class="input"
+                placeholder="Stock ID"
+                required
+              />
               <input
                 type="text"
-                name="drug-name"
+                name="drug"
                 class="input"
                 placeholder="Drug Name"
                 required
@@ -106,7 +106,7 @@
               />
               <input
                 type="text"
-                name="description"
+                name="desc"
                 class="input"
                 placeholder="Description"
                 required
@@ -134,7 +134,7 @@
               />
               <input
                 type="number"
-                name="cost"
+                name="unitCost"
                 class="input"
                 placeholder="Unit cost"
                 required

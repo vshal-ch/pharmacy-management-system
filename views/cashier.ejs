@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      let json = localStorage.getItem('info');
+      let obj = JSON.parse(json);
+      if(json){
+        if(obj.pos !== 'cashier'){
+          location.href = '/'+obj.pos;
+        }
+      }else{
+        location.href = '/login'
+      }
+    </script>
     <title>Cashier | Pharmacy System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,14 +38,14 @@
     </header>
     <aside>
       <ul class="aside-list">
-        <li class="list-item"><a href="cashier.html">Dashboard</a></li>
-        <li class="list-item"><a href="cashier-payment.html">Process payment</a></li>
-        <li class="list-item"><a href="#">Logout</a></li>
+        <li class="list-item"><a href="#">Dashboard</a></li>
+        <li class="list-item"><a href="/cashier/payment">Process payment</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
       </ul>
     </aside>
     <main>
       <div class="grid_7">
-        <a href="cashier.html" class="dashboard-module">
+        <a href="#" class="dashboard-module">
           <img
             src="./assets/logos/admin-icon.png"
             width="75"
@@ -43,7 +54,7 @@
           />
           <span>Dashboard</span>
         </a>
-        <a href="cashier-payment.html" class="dashboard-module">
+        <a href="/cashier/payment" class="dashboard-module">
           <img
             src="./assets/logos/payment.png"
             width="75"

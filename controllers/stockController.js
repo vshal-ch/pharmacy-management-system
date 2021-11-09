@@ -1,13 +1,18 @@
 const Stock = require('../models/Stock');
 
-const addStock = (req,res)=>{
+const addStock = (req,res,flag= true)=>{
     const stock = new Stock(req.body);
     stock.save().then(result=>{
-        res.redirect('/pharmacist/stocks');
+        if(flag){
+            res.redirect('/pharmacist/stocks');
+        }
+        else{
+            return result;
+        }
     })
 }
 
-const getStock = (req,res)=>{
+const getStock = (req,res, flag= true)=>{
     Stock.deleteMany({quantity:0}).then(resu=>{
         Stock.find().then(result=>{
             let obj = result.map(item=>{
@@ -20,7 +25,12 @@ const getStock = (req,res)=>{
                     cost: item.unitCost
                 }
             })
-            res.render('pharmacist-stocks',{tableData: obj});
+            if(flag){
+                res.render('pharmacist-stocks',{tableData: obj});
+            }
+            else{
+                return obj;
+            }
         })
     })
 }
@@ -30,13 +40,17 @@ const getNames = async ()=>{
     return result;
 }
 
-const decreaseStock = (id,num)=>{
-    
+const decreaseStock = async (id,num)=>{
+    id= parseInt(id);
+    num= parseInt(num);
+    let left =await Stock.findOne({stockId: id},{quantity:1});
+    return await Stock.updateOne({stockId: id},{$set :{quantity: left.quantity - num}});
 }
 
 
 module.exports ={
     addStock,
     getStock,
-    getNames
+    getNames,
+    decreaseStock,
 }
