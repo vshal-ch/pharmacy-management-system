@@ -73,14 +73,13 @@ const mgPresc = async (req,res)=>{
 }
 
 const mgStocks = async(req,res)=>{
-  let result = await stock.getStock(req,res,false);
+  let result =  await stock.getStock(req,res,false);
   res.render('manage-stock',{tableData: result})
 }
 
 const mgAddStocks = (req,res)=>{
-  stock.addStock(req,res,false).then(result =>{
-    res.redirect('/manager/stocks');
-  })
+  stock.addStock(req,res,false);
+  res.redirect('/manager/stocks');
 }
 
 module.exports = {
