@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      let json = localStorage.getItem("info");
+      let obj = JSON.parse(json);
+      if (json) {
+        if (obj.pos !== "cashier") {
+          location.href = "/" + obj.pos;
+        }
+      } else {
+        location.href = "/login";
+      }
+    </script>
+    <title>Bills | Pharmacy System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header-nav.css" />
+    <link rel="stylesheet" href="./css/main-with-table.css" />
+    <script src="./js/printBill.js" defer></script>
+    <style> 
+      .print{
+        background-color: hsl(210, 100%, 62%);
+        border: none;
+        outline: none;
+        padding: .4rem .8rem;
+        color: #fff;
+        font-size: .7rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-cont">
+        <img
+          src="./assets/logos/logo.png"
+          class="main-logo"
+          height="75"
+          width="75"
+        />
+      </div>
+      <h1>
+        <a href="#">Pharmacy System</a>
+      </h1>
+    </header>
+    <aside>
+      <ul class="aside-list">
+        <li class="list-item"><a href="/cashier">Dashboard</a></li>
+        <li class="list-item"><a href="#">View bills</a></li>
+        <li class="list-item"><a href="/logout">Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="main-content">
+        <h2 class="title">View bills</h2>
+        <div class="container">
+          <ul class="tabs-list">
+            <li class="tab-item active">
+              <h3 class="tab-title">Bills</h3>
+            </li>
+          </ul>
+          <div class="content">
+            <table class="tab-content" id="table">
+              <tr>
+                <th>Prescription No</th>
+                <th>Customer</th>
+                <th>Invoice No</th>
+                <th>Drug</th>
+                <th>Strength</th>
+                <th>Dose</th>
+                <th>Quantity</th>
+                <th>Print</th>
+              </tr>
+              <% let coll='';
+              if(locals.tableData && locals.tableData.length>0){
+              tableData.forEach(obj=>{%>
+              <tr>
+                <% for(item in obj){
+                  coll+=obj[item]+",";
+                  %>
+                <td><%= obj[item] %></td>
+                <% } %>
+                  <td><button class="print" data-print="<%= coll %>">PRINT</button></td>
+              </tr>
+              <% })} %>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
